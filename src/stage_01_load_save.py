@@ -38,9 +38,9 @@ if __name__ == "__main__":
     
     parsed_args = args.parse_args()
     try:
-        logging.info ("stage one started")
+        logging.info (">>>>stage one started")
         get_data(config_path = parsed_args.config )
-        logging.info ("stage one completed")
+        logging.info ("stage one completed \n")
 
     except Exception as e:
         logging.exception(e)
