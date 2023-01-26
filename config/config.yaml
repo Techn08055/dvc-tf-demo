@@ -8,6 +8,7 @@ artifacts:
   BASE_LOG_DIR: basel_model_dir
   TENSORBOARD_ROOT_LOG_DIR: tensorboard_log_dir
   CALLBACKS_DIR: callbacks
+  DATA_DIR: data
 
 source_download_paths:
   - ../outside_data/dog
