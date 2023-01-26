@@ -11,6 +11,7 @@ def get_VGG16_model(input_shape, model_path):
     model.save(model_path)
     logging.info(f"VGG16 modelsaved at:{model_path} ")
     return model
+
 def prepare_model(model, CLASSES, freeze_all,freeze_till, learning_rate ):
     if freeze_all:
         for layer in model.layers:
@@ -40,3 +41,7 @@ def prepare_model(model, CLASSES, freeze_all,freeze_till, learning_rate ):
 
     return foll_model
 
+def load_full_model(untrained_fill_model_path):
+    model = tf.keras.models.load_model(untrained_fill_model_path)
+    logging.info("Untrained model loaded")
+    return model
