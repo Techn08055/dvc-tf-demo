@@ -17,8 +17,8 @@ def prepare_call_backs(config_path , params_path):
     artifacts = config["artifacts"]
     artifacts_dir = artifacts["ARTIFACTS_DIR"]
     tensorboard_log_dir = os.path.join(artifacts_dir, artifacts["TENSORBOARD_ROOT_LOG_DIR"])
-    checkpoint_dir =  os.path.join(artifacts_dir, artifacts["checkpoints"])
-    callbacks_dir = os.spath.join(artifacts_dir, artifacts["callbacks"])
+    checkpoint_dir =  os.path.join(artifacts_dir, artifacts["CHECKPOINT_DIR"])
+    callbacks_dir = os.path.join(artifacts_dir, artifacts["CALLBACKS_DIR"])
 
     create_directory([
         tensorboard_log_dir,
