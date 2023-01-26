@@ -1,5 +1,6 @@
 import yaml
 import os
+import time
 import json
 
 def read_yaml(path_to_yaml:str) -> dict:
@@ -7,6 +8,11 @@ def read_yaml(path_to_yaml:str) -> dict:
         content = yaml.safe_load(yaml_file)
 
     return content
+
+def get_time_stamp (name):
+    time_stamp = time.asctime().replace(" ", "_").replace(":","_")
+    uniquename  = f"{name}_at_{time_stamp}"
+    return uniquename
 
 def create_directory(dirs:list):
     for dir_path in dirs:
