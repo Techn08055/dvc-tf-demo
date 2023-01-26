@@ -1,5 +1,6 @@
 from src.utils.all_utils import read_yaml, create_directory
-from src.utils.callbacks import create_and_save_tensorboard_callback, create_and_save_checkpoints_callback
+from src.utils.callbacks import create_and_save_tensorboard_callback, create_and_save_checkpoints_callback,get_callbacks
+from src.utils.models import load_full_model
 import argparse
 import pandas as pd 
 import os
@@ -18,6 +19,17 @@ def train_model(config_path , params_path):
 
     artifacts = config["artifacts"]
     artifacts_dir = artifacts["ARTIFACTS_DIR"]
+
+    train_model_dir_path = os.path.join(artifacts_dir, artifacts["TRAINED_MODEL_DIR"])
+    
+    create_directory([train_model_dir_path])
+    untrained_fill_model_path = os.path.join(artifacts_dir, artifacts["BASE_MODEL_DIR"],artifacts["UPDATED_BASE_MODEL_NAME"])
+
+    model = load_full_model(untrained_fill_model_path)
+    callback_dir_path = os.path.join(artifacts_dir, artifacts["CALLBACKS_DIR"])
+    callbacks = get_callbacks(callback_dir_path)
+
+    # train_generator
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
