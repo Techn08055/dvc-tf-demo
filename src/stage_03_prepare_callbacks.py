@@ -1,12 +1,10 @@
 from src.utils.all_utils import read_yaml, create_directory
-from src.utils.models import get_VGG16_model, prepare_model
 from src.utils.callbacks import create_and_save_tensorboard_callback, create_and_save_checkpoints_callback
 import argparse
 import pandas as pd 
 import os
 from tqdm import tqdm
 import logging
-import io
 logging_str = "[%(asctime)s: %(levelname)s: %(module)s]: %(message)s"
 log_dir = "logs"
 os.makedirs(log_dir, exist_ok=True)
