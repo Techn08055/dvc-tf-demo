@@ -1,6 +1,7 @@
 from src.utils.all_utils import read_yaml, create_directory
 from src.utils.callbacks import create_and_save_tensorboard_callback, create_and_save_checkpoints_callback,get_callbacks
 from src.utils.models import load_full_model
+from src.utils.data_management import train_valid_generator
 import argparse
 import pandas as pd 
 import os
@@ -29,7 +30,12 @@ def train_model(config_path , params_path):
     callback_dir_path = os.path.join(artifacts_dir, artifacts["CALLBACKS_DIR"])
     callbacks = get_callbacks(callback_dir_path)
 
-    # train_generator
+    train_generator, valid_generator = train_valid_generator(
+        data_dir = artifacts["DATA_DIR"],
+        IMAGE_SIZE = params["IMAGE_SIZE"][:-1],
+        BATCH_SIZE = params["BATCH_SIZE"],
+        do_data_augmentation = params["AUGMENTATION"]
+    )
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
