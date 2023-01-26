@@ -38,5 +38,5 @@ def prepare_model(model, CLASSES, freeze_all,freeze_till, learning_rate ):
 
     logging.info("custom model is compiled")
 
-    return model
+    return foll_model
 
