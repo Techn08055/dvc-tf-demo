@@ -6,5 +6,6 @@ pandas
 tqdm
 boto3
 pyYAML
+joblib
 
 -e .
