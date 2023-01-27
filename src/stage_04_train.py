@@ -1,6 +1,6 @@
 from src.utils.all_utils import read_yaml, create_directory
 from src.utils.callbacks import create_and_save_tensorboard_callback, create_and_save_checkpoints_callback,get_callbacks
-from src.utils.models import load_full_model
+from src.utils.models import load_full_model, get_unique_path
 from src.utils.data_management import train_valid_generator
 import argparse
 import pandas as pd 
@@ -48,7 +48,11 @@ def train_model(config_path , params_path):
         validation_steps = validation_steps,
         callbacks = callbacks   
     )
-    
+    model_file_path = get_unique_path(train_model_dir_path)
+    model.save(model_file_path)
+
+    logging.info("training is done and model saved")
+
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
 

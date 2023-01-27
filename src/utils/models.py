@@ -1,6 +1,7 @@
 import tensorflow as tf
 import os
 import logging
+from src.utils.all_utils import get_time_stamp
 
 def get_VGG16_model(input_shape, model_path):
     model = tf.keras.applications.vgg16.VGG16(
@@ -45,3 +46,10 @@ def load_full_model(untrained_fill_model_path):
     model = tf.keras.models.load_model(untrained_fill_model_path)
     logging.info("Untrained model loaded")
     return model
+
+def get_unique_path(train_model_dir_path, model_name = "model"):
+    time_stamp = get_time_stamp(model_name)
+    unique_model_name =  f"{time_stamp}_.h5"
+    unique_model_path = os.path.join(train_model_dir_path, unique_model_name)
+
+    return unique_model_path
